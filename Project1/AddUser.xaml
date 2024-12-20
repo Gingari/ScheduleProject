@@ -1,0 +1,122 @@
+﻿    <Window x:Class="Project1.AddUser"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:local="clr-namespace:Project1"
+           mc:Ignorable="d"
+        Title="MainWindow" Height="503" Width="856" WindowState="Maximized" WindowStyle="None">
+    <Window.Resources>
+        <!-- Стиль для слегка закругленных текстовых полей -->
+        <Style x:Key="RoundedTextBoxStyle" TargetType="TextBox">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="#FF88C0D0"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Margin" Value="0,0,0,15"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Background="{TemplateBinding Background}"    
+                      BorderBrush="{TemplateBinding BorderBrush}"    
+                      BorderThickness="{TemplateBinding BorderThickness}"    
+                      CornerRadius="10">
+                            <ScrollViewer x:Name="PART_ContentHost"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Стиль для кнопки -->
+        <Style x:Key="RoundedButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#FF88C0D0"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Margin" Value="0,10"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"    
+                      CornerRadius="10"    
+                      BorderBrush="{TemplateBinding BorderBrush}"    
+                      BorderThickness="1">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FF88C0D0"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#FF88C0D0"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid >
+        <Grid.Background>
+            <ImageBrush ImageSource="/Image2.png" Stretch="Fill"/>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="0*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Правая панель с формой -->
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left" Height="464" Width="240" Margin="20,0,0,0">
+            <TextBlock Text="Добавление нового пользователя" FontSize="24" FontWeight="Bold" Foreground="#FF88C0D0" HorizontalAlignment="Left" Margin="0,0,0,0"/>
+            <TextBlock Text="пользователя" HorizontalAlignment="Center" FontSize="24" FontWeight="Bold" Foreground="#FF88C0D0" RenderTransformOrigin="0.494,-0.561"/>
+
+            <!-- Поле для логина -->
+            <Label Content="Логин:" Foreground="Gray"/>
+            <TextBox x:Name="EmailTextBox" Style="{StaticResource RoundedTextBoxStyle}"/>
+
+            <!-- Поле для пароля -->
+            <Label Content="Пароль:" Foreground="Gray"/>
+            <TextBox x:Name="PasswordBox" Style="{StaticResource RoundedTextBoxStyle}" Margin="0,0,0,15"/>
+
+            <!-- Поле для ФИО преподавателя -->
+            <Label Content="ФИО преподавателя:" Foreground="Gray"/>
+            <TextBox x:Name="TeacherNameTextBox" Style="{StaticResource RoundedTextBoxStyle}" Margin="0,0,0,15"/>
+
+            <!-- Выпадающий список для выбора роли -->
+            <Label Content="Роль:" Foreground="Gray"/>
+            <ComboBox x:Name="RoleComboBox" Width="172" BorderBrush="#FF88C0D0" Foreground="Black" Background="White" SelectedIndex="0" RenderTransformOrigin="0.622,0.681">
+                <ComboBoxItem Content="Администратор"/>
+                <ComboBoxItem Content="Учитель"/>
+            </ComboBox>
+
+            <Button Content="Добавить" Width="100" Height="25" Style="{StaticResource RoundedButtonStyle}" Click="LoginButton_Click"/>
+
+            <!-- Кнопка для добавления пользователя -->
+
+
+            <!-- Кнопка для выхода -->
+
+        </StackPanel>
+        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Height="40" Width="80" Margin="749,0,0,0">
+            <Button x:Name="CloseButton"
+Content="X"
+Width="30"
+Height="30"
+HorizontalAlignment="Right"
+VerticalAlignment="Top"
+Margin="10"
+Background="Transparent"
+Foreground="Red"
+BorderBrush="Transparent"
+FontWeight="Bold"
+FontSize="16"
+Click="CloseButton_Click"
+ToolTip="Закрыть приложение"/>
+        </StackPanel>
+
+
+    </Grid>
+</Window>
